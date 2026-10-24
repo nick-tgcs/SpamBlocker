@@ -21,6 +21,7 @@ import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.PhoneBlockAuth
 import spam.blocker.ui.startAuthLogin
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyText
@@ -93,6 +94,7 @@ class OAuthSetupDialog(
                 HtmlText("<sample>${tokenInSpf!!.take(16)}...</sample>")
 
                 StrokeButton(Str(R.string.use_this_token), color = G.palette.success) {
+                    PhoneBlockAuth.cancel(ctx)
                     doAdd(ctx)
                     trigger.value = false
                 }
@@ -120,7 +122,7 @@ class OAuthSetupDialog(
                 trigger = triggerManuallyEnter,
                 buttons = {
                     StrokeButton(Str(R.string.save), G.palette.teal200) {
-                        spf.OAuth(ctx).phoneBlockToken = tokenEntered
+                        PhoneBlockAuth.saveToken(ctx, tokenEntered)
                         triggerManuallyEnter.value = false
                         doAdd(ctx)
                         trigger.value = false
