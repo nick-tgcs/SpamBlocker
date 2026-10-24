@@ -31,6 +31,7 @@ import spam.blocker.db.ReportApi
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.ui.PhoneBlockAuth
 import spam.blocker.ui.setting.quick.Bayes
 import spam.blocker.util.FileUtils.readInternalFile
 import spam.blocker.util.FileUtils.writeInternalFile
@@ -886,10 +887,7 @@ class OAuth : IConfig {
     }
 
     override fun apply(ctx: Context) {
-        val me = this
-        spf.OAuth(ctx).apply {
-            phoneBlockToken = me.phoneBlockToken
-        }
+        PhoneBlockAuth.saveToken(ctx, phoneBlockToken)
     }
 }
 

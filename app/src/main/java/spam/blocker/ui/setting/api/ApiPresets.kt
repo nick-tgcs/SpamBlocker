@@ -62,10 +62,9 @@ val defApiReportActions by lazy {
 
 object PhoneBlock {
     const val spfTokenKey = "PhoneBlock_token"
-    const val OAuthState = "PhoneBlock_OAuth_State"
 
-    const val oauthUrl = "https://phoneblock.net/phoneblock/mobile/login?appId=SpamBlocker&state=$OAuthState"
-    const val oauthUrl_Debug = "https://phoneblock.net/pb-test/mobile/login?appId=SpamBlocker&state=$OAuthState"
+    const val oauthUrl = "https://phoneblock.net/phoneblock/mobile/login?appId=SpamBlocker"
+    const val oauthUrl_Debug = "https://phoneblock.net/pb-test/mobile/login?appId=SpamBlocker"
 }
 
 val ApiQueryPresets by lazy {
